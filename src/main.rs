@@ -1,4 +1,11 @@
+use project_rust_kvstore::Store;
+
 fn main() {
-    println!("Hello, world! This is a Test File to chekc if Git is working correctly!");
-    println!("Goodbye for Now!");
+    let mut store = Store::new();
+    store.set("name".to_string(), "kv-store".to_string());
+
+    match store.get("name") {
+        Some(value) => println!("Got: {}", value),
+        None => println!("Key not found"),
+    }
 }
